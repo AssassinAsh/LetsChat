@@ -13,6 +13,7 @@ socket.on('connect', function() {
             alert(err);
             window.location.href = '/';
         } else {
+            jQuery('#room-name').text(params.room);
             console.log('Sb Thik hai');
         }
     });
@@ -62,7 +63,6 @@ jQuery('#message-form').on('submit', function(e) {
 
     var messageTextBox = jQuery('[name=message]');
     socket.emit('createMessage', {
-        from: "User",
         text: messageTextBox.val()
     }, function() {
         messageTextBox.val('');
